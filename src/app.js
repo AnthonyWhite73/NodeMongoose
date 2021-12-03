@@ -2,12 +2,12 @@ require("./db/connection");
 
 const yargs = require("yargs");
 
-const {addMovie, listMovie, listMovies, updateMovie, deleteMovie} = require("./movie/movieMethods");
+const {addMovie, listMovie, listMovies, updateMovie, deleteMovie, listMoviesByTitle} = require("./movie/movieMethods");
 
 const app = async(args) => {
     switch (process.argv[2]){
         case "add":
-            addMovie({title: args.title, actor: args.actor});
+            addMovie({title: args.title, actor: args.actor, genre: args.genre, rating: args.rating});
             break;
         case "list":
             console.log("at list hit")
@@ -23,6 +23,12 @@ const app = async(args) => {
                 newTitle: process.argv[4]            
             };
             updateMovie(newMovie2);
+            break;
+        case "listByTitle":
+            const listMovie2 = {
+                title: process.argv[3]
+            };
+            listMoviesByTitle(listMovie2);
             break;
         default:
             console.log("Incorrect command");

@@ -9,6 +9,12 @@ const movieSchema = new mongoose.Schema({
     actor: {
         type: String,
     },
+    genre: {
+        type: String,
+    },
+    rating: {
+        type: String
+    }
 });
 
 const Movie = mongoose.model("Movie", movieSchema);
